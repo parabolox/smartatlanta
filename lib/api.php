@@ -50,9 +50,19 @@ Class Api
     {
         self::connect();
         self::$sag->setDatabase("servicerequests");
-        $id = time().'-'.uniqid();
+        if (isset($data['id']))
+        {
+            $id = $data['id'];
+        }
+        else
+        {
+            $id = time().'-'.uniqid();
+        }
+
         $response = self::$sag->put($id,$data);
         $response = json_decode($response->body,$assoc=true);
+        xo($response);
+        die('2@@@');
         return isset($response['ok'])&&($response['ok']==true);
     }
 

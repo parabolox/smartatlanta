@@ -31,7 +31,7 @@ function populatePosition() {
 		document.getElementById('lat').value = position.coords.latitude;
 		document.getElementById('long').value = position.coords.longitude;
 	});
-	
+
 }
 
 function populateTypes() {
@@ -42,7 +42,7 @@ function populateTypes() {
 		opt.value = categories;
 		document.getElementById("category").add(opt);
 	}
-	
+
 	populateSubtype(document.getElementById("category").value);
 }
 
@@ -52,7 +52,7 @@ function populateSubtype(cat) {
 	while(subc.options.length != 0) {
 		subc.remove(0);
 	}
-	
+
 	for(var i = 0; i < subs.length; i++) {
 		var opt = document.createElement("option");
 		opt.value = subs[i];
@@ -63,6 +63,7 @@ function populateSubtype(cat) {
 
 function formIsValid() {
 	if(document.getElementById("lat").value == "") {
+        return true;
 		var al = document.getElementById("formAlert");
 		al.innerText = "Location not available! Please ensure location services are enabled for this page";
 		al.style.display = "block"
@@ -74,7 +75,7 @@ function formIsValid() {
 		al.style.display = "block"
 		return false;
 	}
-	
+
 	return true;
 }
 
@@ -92,7 +93,7 @@ function formIsValid() {
   <h1>New Service Request</h1>
 </div>
 
-<form method="POST" action="add.php">
+<form method="POST" action="/add.php" enctype="multipart/form-data">
 
 <label for="fname">First Name</label>
 <div class="input-group">
@@ -101,7 +102,7 @@ function formIsValid() {
 
 <label for="lname">Last Name</label>
 <div class="input-group">
-	<input name="lname" type="text" />
+	<input name="lname" type="text"/>
 </div>
 
 
