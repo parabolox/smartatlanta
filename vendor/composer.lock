@@ -1,0 +1,59 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "b7d4646fa3beb53da0c70fca232ae396",
+    "packages": [
+        {
+            "name": "sag/sag",
+            "version": "v0.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sbisbee/sag.git",
+                "reference": "181c586fc24e23bd44c6b857a05892b613c192df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sbisbee/sag/zipball/181c586fc24e23bd44c6b857a05892b613c192df",
+                "reference": "181c586fc24e23bd44c6b857a05892b613c192df",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "suggest": {
+                "lib-curl": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sam Bisbee",
+                    "email": "sam@sbisbee.com",
+                    "homepage": "http://www.sbisbee.com/"
+                }
+            ],
+            "description": "A simple but powerful PHP library for talking to CouchDB.",
+            "homepage": "http://www.saggingcouch.com/",
+            "time": "2013-12-27T05:02:01+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

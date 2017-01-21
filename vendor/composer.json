@@ -1,0 +1,14 @@
+{
+    "name": "root/vendor",
+    "description": "SmartAtlanta",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Team",
+            "email": "shtylenko@gmail.com"
+        }
+    ],
+    "require": {
+        "sag/sag": "*"
+    }
+}
