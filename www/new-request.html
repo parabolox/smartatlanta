@@ -1,5 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
 <html>
 <head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -32,16 +37,27 @@ function populatePosition() {
 function populateTypes() {
 	var finalTypes = [];
 	for(var categories in dpw.requestCategory) {
-		var catArray = dpw.requestCategory[categories];
-		for(var i = 0; i < catArray.length; i++) {
-			var thisText = categories+": "+catArray[i];
-			var opt = document.createElement("option");
-			opt.text = thisText;
-			opt.value = thisText;
-			document.getElementById("category").add(opt);
-			//finalTypes.push(categories+": "+catArray[i]);
-			
-		}
+		var opt = document.createElement("option");
+		opt.text = categories;
+		opt.value = categories;
+		document.getElementById("category").add(opt);
+	}
+	
+	populateSubtype(document.getElementById("category").value);
+}
+
+function populateSubtype(cat) {
+	var subs = dpw.requestCategory[cat];
+	var subc = document.getElementById("subCategory")
+	while(subc.options.length != 0) {
+		subc.remove(0);
+	}
+	
+	for(var i = 0; i < subs.length; i++) {
+		var opt = document.createElement("option");
+		opt.value = subs[i];
+		opt.text = subs[i];
+		document.getElementById("subCategory").add(opt);
 	}
 }
 
@@ -52,6 +68,13 @@ function formIsValid() {
 		al.style.display = "block"
 		return false;
 	}
+	else if(typeof(document.getElementById("subCategory").value) === 'undefined' || document.getElementById("subCategory").value == "") {
+		var al = document.getElementById("formAlert");
+		al.innerText = "Sub-category not provided";
+		al.style.display = "block"
+		return false;
+	}
+	
 	return true;
 }
 
@@ -62,6 +85,8 @@ function formIsValid() {
 </head>
 
 <body>
+
+<div class="container">
 
 <div class="page-header">
   <h1>New Service Request</h1>
@@ -92,7 +117,12 @@ function formIsValid() {
 
 <label for="category">Category</label>
 <div class="input-group">
-	<select name="category" id="category"></select>
+	<select name="category" id="category" onchange="javascript:populateSubtype(document.getElementById('category').value);")"></select>
+</div>
+
+<label for="subCategory">Sub-Category</label>
+<div class="input-group">
+	<select name="subCategory" id="subCategory"></select>
 </div>
 
 <div style="display:none">
@@ -113,17 +143,21 @@ populatePosition();
 <label for="picture">Picture Upload</label>
 <div class="input-group">
 	<input name="picture" type="file" accept="image/*" capture="camera">
+	<p class="help-block">Choose file or take a picture of the problem</p>
 </div>
 
 <label for="email">Additional Information</label>
 <div class="input-group">
-	<input name="description" type="text" size="50"/>
+	<input name="description" type="text"/>
 </div>
 
-<input type="button" onclick="javascript:if(formIsValid()) document.forms[0].submit();" value="Submit New Request" />
+<!-- <input type="button" onclick="javascript:if(formIsValid()) document.forms[0].submit();" value="Submit New Request" /> -->
+<button type="button" class="btn btn-default" onclick="javascript:if(formIsValid()) document.forms[0].submit();">Submit Request</button>
 
 <div style="display: none" class="alert alert-danger" role="alert" id="formAlert"></div>
 </form>
+
+</div>
 
 </body>
 </html>
