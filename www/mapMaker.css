@@ -1,7 +1,7 @@
 #map {
         height: 82%;
-		width: 70%;
-		margin-left: 15%;
+		width: 85%;
+		
 		
       }
 html, body {
@@ -13,8 +13,19 @@ html, body {
 #atlanta{
 	margin-left: 43%;
 }
-.navbar {
+.navbar-default {
 	width: 9%;
 	margin-left: 45%;
 	
+}
+.small{
+	
+}
+#all {
+	width: 100%;
+	height: 100%;
+}
+ul {
+	
+	float: left;
 }
