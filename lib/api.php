@@ -61,8 +61,6 @@ Class Api
 
         $response = self::$sag->put($id,$data);
         $response = json_decode($response->body,$assoc=true);
-        xo($response);
-        die('2@@@');
         return isset($response['ok'])&&($response['ok']==true);
     }
 
