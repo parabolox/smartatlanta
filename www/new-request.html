@@ -15,125 +15,7 @@
 
 <script type="text/javascript">
 
-var dpw = {
-  "_id": "a2ff54d75a9c45bec6119fe38e7ee0ad",
-  "_rev": "13-318a812ee4ca15c62376dbdcb3f51355",
-  "timestamp": "12-01-2016",
-  "requestCategory": {
-    "Park Maintenance": [
-      "Graffiti",
-      "Non-Functioning Water Fountains",
-      "Playground Repairs"
-    ],
-    "Trees": [
-      "Dead, Dying, Hazardous Trees",
-      "Down Trees Blocking Street/Sidewalk"
-    ],
-    "Flooding": [
-      "Street Flooding",
-      "Clogged Basin"
-    ],
-    "Sewer": [
-      "Sink Hole",
-      "Sewer Backup",
-      "Sewer Spill",
-      "Damaged or Missing Manhole Lid",
-      "Foul Sewer Odor",
-      "Water Leak or Main Break"
-    ],
-    "Street Light": [
-      "Minor Street Light Repair"
-    ],
-    "Water Services": [
-      "Burst Pipe",
-      "No Water",
-      "Leaking or Damaged Fire Hydrant"
-    ],
-    "Signs and Signals": [
-      "Damaged Traffic Sign",
-      "Damaged or Missing Street Name Sign",
-      "Street Light is Out",
-      "Street Light Pole Down or Damaged"
-    ],
-    "Streets and Sidewalks": [
-      "Potholes",
-      "Concrete Repair",
-      "Unpaved Road Repair",
-      "Bridge Repair"
-    ]
-  },
-  "requestType": {
-    "Individual": {
-      "ContactFirstName": "Contact First Name",
-      "ContactLastName": "Contact Last Name",
-      "EmailAddress": "Email Address",
-      "Phone": "Phone"
-    },
-    "Business": {
-      "Business Name": "BusinessName",
-      "Contact First Name": "Contact First Name",
-      "Contact Last Name": "Contact Last Name",
-      "Email Address": "Email Address",
-      "Phone": "Phone"
-    },
-    "Anonymous": {
-      "Contact First Name": "Anonymous",
-      "Contact Last Name": "User",
-      "Email Address": "test@test.com",
-      "Phone": "Phone"
-    }
-  },
-  "locationType": {
-    "Point": {
-      "coordinates": [
-        -72.26098819699968,
-        41.804738030000465
-      ],
-      "Service City/County": "City/County",
-      "Service State": "Service State",
-      "Service Postal Code": "Service Postal Code"
-    },
-    "Address": {
-      "Service Street #": "Service Street #",
-      "Service Street Prefix": "Service Street Prefix",
-      "Service Street Name": "Service Street Name",
-      "Service Street Type": "Service Street Type",
-      "Service Street Suffix": "Service Street Suffix",
-      "Service Unit #": "Service  Unit #",
-      "Service City/County": "City/County",
-      "Service State": "Service State",
-      "Service Postal Code": "Service Postal Code"
-    },
-    "HighwayExit": {
-      "Highway": "Highway",
-      "Exit": "Exit",
-      "Service City/County": "Service City/Count"
-    },
-    "Intersection": {
-      "Cross Street1 Prefix": "Cross Street1 Prefix",
-      "Cross Street1": "Cross Street1",
-      "Cross Street1 Name": "Cross Street1 Name",
-      "Cross Street1 Type": "Cross Street1 Type",
-      "Cross Street1 Suffix": "Cross Street1 Suffix",
-      "Cross Street2 Prefix": "Cross Street2 Prefix",
-      "Cross Street2": "Cross Street2",
-      "Cross Street2 Name": "Cross Street2 Name",
-      "Cross Street2 Type": "Cross Street2 Type",
-      "Cross Street2 Suffix": "Cross Street2 Suffix",
-      "City/County": "City/County"
-    }
-  },
-  "Summary of Request": "Summary of Request",
-  "_attachments": {
-    "download.jpg": {
-      "content_type": "image/jpeg",
-      "revpos": 11,
-      "digest": "md5-gHF4k0xENdtP+kPS6gPIGg==",
-      "length": 5346,
-      "stub": true
-    }
-  }
-};
+$.get("dpw.json", function(data){dpw=data; populateTypes();});
 
 </script>
 
@@ -148,7 +30,6 @@ function populatePosition() {
 }
 
 function populateTypes() {
-console.log("loading");
 	var finalTypes = [];
 	for(var categories in dpw.requestCategory) {
 		var catArray = dpw.requestCategory[categories];
@@ -243,10 +124,6 @@ populatePosition();
 
 <div style="display: none" class="alert alert-danger" role="alert" id="formAlert"></div>
 </form>
-
-<script type="text/javascript">
-populateTypes();
-</script>
 
 </body>
 </html>
