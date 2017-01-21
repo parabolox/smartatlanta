@@ -27,7 +27,6 @@
 </nav>
 <div id= "all">
 <ul class="nav nav-pills nav-stacked" id="vertical">
-<<<<<<< Updated upstream:www/mapMaker.html
    <li class="small"><a href = "/?category=parkmaintance">Park Maintance</a></li>
    <li class="small"><a href = "/?category=trees">Trees</a></li>
    <li class="small"><a href = "/?category=flooding">Flooding</a></li>
@@ -35,19 +34,7 @@
    <li class="small"><a href = "/?category=light">Street Light Repair</a></li>
    <li class="small"><a href = "/?category=water">Water Services</a></li>
    <li class="small"><a href = "/?category=signs">Signs and Signals Issues</a></li>
-   <li class="small"><a href = "/?category=streets">Streets and Sidewalks Issues</a></li>
-	 
-=======
-   <li class="small"><a href = "/parkmaintance">Park Maintance</a></li>
-   <li class="small"><a href = "/trees">Trees</a></li>
-   <li class="small"><a href = "/flooding">Flooding</a></li>
-   <li class="small"><a href = "/sewer">Sewer Issues</a></li>
-   <li class="small"><a href = "/light">Street Light Repair</a></li>
-   <li class="small"><a href = "/water">Water Services</a></li>
-   <li class="small"><a href = "/signs">Signs and Signals Issues</a></li>
-   <li class="small"><a href = "/streets">Streets and Sidewalks Issues</a></li>
-
->>>>>>> Stashed changes:templates/index.php
+   <li class="small"><a href = "/?category=streets">Streets and Sidewalks Issues</a></li>	 
 </ul>
 
     <div id="map"></div>
