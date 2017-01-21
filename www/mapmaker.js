@@ -1,4 +1,4 @@
-	var data = [{
+    var data = [{
       "id":"1485022282-5883a44ad3279",
       "key":"1485022282-5883a44ad3279",
       "value":{
@@ -251,7 +251,7 @@
          "image":"http:\/\/3.bp.blogspot.com\/-bMf_r22jThI\/UAb6XroA8OI\/AAAAAAAAAP8\/7UgGXR0_M9A\/s1600\/10-sheep-tree.jpg"
       }
    }];
-	
+
 	function initMap() {
 		var myLatLng = {lat:33.776531, lng:-84.413242};
 		var geocoder;
@@ -262,22 +262,21 @@
           zoom: 11,
           center: myLatLng
         });
-		
-		
+
 		console.log(data[0]);
-		console.log(data[1]);
+		//console.log(data[1]);
 	}
 	function geocodeAddress(geocoder, resultsMap) {
- 
-       
-			
+
+
+
 				var currentString = '<h3>' +"Address: " + '</h3>' +address + '<h3>' +"Description: " + '</h3>' + description + '<h3>' +"Pick Up Time: " + '</h3>' + PickUp +  '<h3>' +"Click below to pick up the food from the resturant: " + '</h3>' +'<input type="button" value= "Pick Up Food" id="PickUpFood" onclick="markerColorChange(' + uniquePickupId + ')">' +  '<h3>' +"Click below if the food has been picked up: " + '<input type="button" value= "Delete" id="DeleteMarker" onclick="deleteMarker(' + uniquePickupId + ')">';
 				resultsMap.setCenter(results[0].geometry.location);
 				var infowindow = new google.maps.InfoWindow({
 					//has to be the current String
 				  content: currentString
 				});
-				
+
 				var marker = new google.maps.Marker({
 				  map: resultsMap,
 				  position: results[0].geometry.location,
@@ -287,10 +286,10 @@
 				//onclick set content
 				var markerClick = function() {
 					infowindow.setContent(currentString);
-					infowindow.open(map, marker);	
+					infowindow.open(map, marker);
 				};
 				marker.addListener('click', markerClick);
 				uniquePickupId ++;
-			
-      
-      }	
+
+
+      }
