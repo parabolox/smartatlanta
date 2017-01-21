@@ -167,7 +167,7 @@ console.log("loading");
 function formIsValid() {
 	if(document.getElementById("lat").value == "") {
 		var al = document.getElementById("formAlert");
-		al.innerText = "Please ensure location services are enabled and you have clicked the 'Find Me' button to populate location data";
+		al.innerText = "Location not available! Please ensure location services are enabled for this page";
 		al.style.display = "block"
 		return false;
 	}
@@ -182,8 +182,11 @@ function formIsValid() {
 
 <body>
 
+<div class="page-header">
+  <h1>New Service Request</h1>
+</div>
 
-<form method="POST" action="submit.php">
+<form method="POST" action="add.php">
 
 <label for="fname">First Name</label>
 <div class="input-group">
@@ -211,10 +214,7 @@ function formIsValid() {
 	<select name="category" id="category"></select>
 </div>
 
-<div class="input-group">
-	<input type="button" value="Find Me" onclick="javascript:populatePosition();">
-</div>
-
+<div style="display:none">
 <label for="lat">Latitude</label>
 <div class="input-group">
 	<input name="lat" type="text" id="lat" disabled/>
@@ -224,10 +224,19 @@ function formIsValid() {
 <div class="input-group">
 	<input name="long" type="text" id="long" disabled/>
 </div>
+</div>
+<script type="text/javascript">
+populatePosition();
+</script>
 
 <label for="picture">Picture Upload</label>
 <div class="input-group">
 	<input name="picture" type="file" accept="image/*" capture="camera">
+</div>
+
+<label for="email">Additional Information</label>
+<div class="input-group">
+	<input name="description" type="text" size="50"/>
 </div>
 
 <input type="button" onclick="javascript:if(formIsValid()) document.forms[0].submit();" value="Submit New Request" />
