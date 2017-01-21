@@ -3,13 +3,12 @@
 require '../ini.php';
 require '../lib/api.php';
 
-
 $list = Api::get();
 
-echo json_encode($list);
+///echo json_encode($list);
 
-//$categories = Api::dictionaries();
-//xo($categories);
+$categories = Api::dictionaries();
+xo($categories);
 
 $dummyRecord = array(
     'dateTimePosted' => time(),

@@ -1,4 +1,4 @@
-    var data = [{
+           var data = [{
       "id":"1485022282-5883a44ad3279",
       "key":"1485022282-5883a44ad3279",
       "value":{
@@ -262,34 +262,39 @@
           zoom: 11,
           center: myLatLng
         });
-
-		console.log(data[0]);
-		//console.log(data[1]);
+		data = JSON.parse(data);
+		for(var i=0; i<data.length; i++) {
+			address(map, data[i]);
+		}
+		
 	}
-	function geocodeAddress(geocoder, resultsMap) {
+	function address(map, result) {
+				
 
 
-
-				var currentString = '<h3>' +"Address: " + '</h3>' +address + '<h3>' +"Description: " + '</h3>' + description + '<h3>' +"Pick Up Time: " + '</h3>' + PickUp +  '<h3>' +"Click below to pick up the food from the resturant: " + '</h3>' +'<input type="button" value= "Pick Up Food" id="PickUpFood" onclick="markerColorChange(' + uniquePickupId + ')">' +  '<h3>' +"Click below if the food has been picked up: " + '<input type="button" value= "Delete" id="DeleteMarker" onclick="deleteMarker(' + uniquePickupId + ')">';
-				resultsMap.setCenter(results[0].geometry.location);
+				var currentString = '<img src="http://www.w3schools.com/html/pic_graph.png"  alt="Mountain View" style="width:100%;height:100%;">' + '<p>' + result.doc.category + '</p>' ;
+				
 				var infowindow = new google.maps.InfoWindow({
 					//has to be the current String
 				  content: currentString
 				});
-
+				var location = new Object();
+				location.lat = parseFloat(result.doc.lat);
+				location.lng= parseFloat(result.doc.lng);
+				
 				var marker = new google.maps.Marker({
-				  map: resultsMap,
-				  position: results[0].geometry.location,
+				  map: map,
+				  position: location,
 				  icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
 				});
-				markerList[uniquePickupId] = marker;
+				
 				//onclick set content
 				var markerClick = function() {
 					infowindow.setContent(currentString);
 					infowindow.open(map, marker);
 				};
 				marker.addListener('click', markerClick);
-				uniquePickupId ++;
+				
 
 
       }
