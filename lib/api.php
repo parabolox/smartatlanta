@@ -11,26 +11,39 @@ Class Api
         self::$sag = new Sag(BLUEMIX_CLOUDAND_KEY.".cloudant.com");
     }
 
-    static function dictionaries()
+    static function categories()
     {
         self::connect();
         self::$sag->setDatabase("dpw");
         $response = self::$sag->get('a2ff54d75a9c45bec6119fe38e7ee0ad');
         $response = json_decode($response->body,$assoc=true);
-        return $response["requestCategory"];
+        $categories = $response["requestCategory"];
+        $result = array();
+
+        foreach ($categories as $k=>$subs)
+        {
+            foreach ($subs as $catname)
+            {
+                $result[] = $k.': '.$catname;
+            }
+        }
+
+        return $result;
     }
 
-    static function get($filter=false)
+    static function get($id=false)
     {
         self::connect();
         self::$sag->setDatabase("servicerequests");
-        $response = self::$sag->get('_all_docs?include_docs=true');
-        $response = json_decode($response->body,$assoc=true);
-        foreach ($response as &$row)
-        {
-            unset($row['_rev']);
+        if ($id) {
+            $response = self::$sag->get($id);
+            $response = json_decode($response->body,$assoc=true);
+            return $response;
+        } else {
+            $response = self::$sag->get('_all_docs?include_docs=true');
+            $response = json_decode($response->body,$assoc=true);
+            return $response["rows"];
         }
-        return $response["rows"];
     }
 
     static function add($data)
